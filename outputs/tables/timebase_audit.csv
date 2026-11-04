@@ -1,0 +1,10 @@
+house,wm_column,minutes,days,bst_days,bst_days_already_utc,bst_days_local_corrected,bst_days_undetermined,bst_days_undetermined_inferred_local
+2,Appliance2,889018,491,299,218,79,4,2
+5,Appliance3,933533,628,323,207,111,7,2
+7,Appliance5,882910,554,292,181,110,2,1
+8,Appliance4,799224,513,250,178,69,5,2
+9,Appliance3,817947,495,279,163,112,5,1
+15,Appliance3,816947,531,291,174,113,6,2
+16,Appliance5,782773,493,272,106,164,4,2
+17,Appliance4,676650,452,275,179,93,4,1
+18,Appliance5,637922,429,256,181,74,4,3

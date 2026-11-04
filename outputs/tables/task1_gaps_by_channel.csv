@@ -1,0 +1,11 @@
+,channel,minutes_missing_after_resample,minutes_filled_short_gap,minutes_still_missing
+Aggregate,Aggregate,119686,893,118793
+Appliance1,Fridge,123778,2801,120977
+Appliance2,Freezer(1),123473,2371,121102
+Appliance3,Freezer(2),121143,930,120213
+Appliance4,Washer Dryer,132837,3232,129605
+Appliance5,Washing Machine,129691,3567,126124
+Appliance6,Dishwasher,120560,839,119721
+Appliance7,Computer,119701,894,118807
+Appliance8,Television Site,121889,1859,120030
+Appliance9,Electric Heater,338369,1058,337311

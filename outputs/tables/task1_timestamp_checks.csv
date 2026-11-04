@@ -1,0 +1,18 @@
+,part1,part2
+rows,4377877,4140886
+first,2013-10-09 14:06:17,2014-06-27 21:57:50
+last,2014-10-01 01:27:07,2015-07-10 11:56:32
+time_unparseable,0,0
+unix_missing,0,0
+time_vs_unix_abs_diff_le_1s,4377877,4140886
+time_vs_unix_abs_diff_gt_1s,0,0
+monotonic,False,True
+backward_jumps,1,0
+repeated_timestamps,1003950,14755
+interval_median_s,7.0,7.0
+interval_p99_s,16.0,9.0
+gaps_gt_1min,781,3604
+gaps_gt_10min,331,59
+gaps_gt_1h,14,19
+gaps_gt_1day,3,10
+exact_duplicate_rows,595935,0

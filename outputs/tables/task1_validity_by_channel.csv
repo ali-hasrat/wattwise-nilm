@@ -1,0 +1,11 @@
+,channel,negative,above_limit,zero_aggregate,missing_before
+Aggregate,Aggregate,0,97,8,174777
+Appliance1,Fridge,0,761,0,423610
+Appliance2,Freezer(1),0,35,0,445120
+Appliance3,Freezer(2),0,116,0,297701
+Appliance4,Washer Dryer,0,1011,0,496646
+Appliance5,Washing Machine,0,70,0,482908
+Appliance6,Dishwasher,0,33,0,328061
+Appliance7,Computer,0,373,0,218513
+Appliance8,Television Site,0,149,0,376393
+Appliance9,Electric Heater,0,43,0,1896158

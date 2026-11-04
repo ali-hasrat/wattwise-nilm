@@ -1,0 +1,33 @@
+{
+  "selected_model": "LightGBM hurdle",
+  "hurdle_threshold": 0.3,
+  "failure_days": [
+    {
+      "case": "Over-estimate (phantom load)",
+      "house": 8,
+      "day": "2013-11-26",
+      "true_kwh": 0.696,
+      "pred_kwh": 1.823
+    },
+    {
+      "case": "Under-estimate (missed wash)",
+      "house": 8,
+      "day": "2014-05-07",
+      "true_kwh": 2.621,
+      "pred_kwh": 0.398
+    }
+  ],
+  "test_pooled": {
+    "mae_w": 16.495990208457933,
+    "rmse_w": 160.94997693157066,
+    "mae_on_w": 534.4942723672834,
+    "energy_error_pct": -20.6363749955306,
+    "precision": 0.5571294029007346,
+    "recall": 0.5812143839654156,
+    "f1": 0.5689170994422004,
+    "daily_energy_mae_kwh": 0.24810270512758006,
+    "cycle_recall": 0.7548449612403101,
+    "cycle_precision": 0.5763121215034125
+  },
+  "n_features": 66
+}

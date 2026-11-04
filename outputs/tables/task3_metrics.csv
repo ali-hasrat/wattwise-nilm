@@ -1,0 +1,45 @@
+split,model,scope,mae_w,rmse_w,mae_on_w,energy_error_pct,precision,recall,f1,daily_energy_mae_kwh,cycle_recall,cycle_precision,true_cycles,pred_cycles
+validation,Always-off,pooled,5.6647,93.1644,417.6937,-100.0,0.0,0.0,0.0,0.1243,0.0,,,
+validation,Always-off,house_17,5.6647,93.1644,417.6937,-100.0,0.0,0.0,0.0,0.1243,0.0,,215.0,0.0
+validation,Constant mean,pooled,22.4692,93.7259,400.3234,206.6416,0.0,0.0,0.0,0.314,0.0,,,
+validation,Constant mean,house_17,22.4692,93.7259,400.3234,206.6416,0.0,0.0,0.0,0.314,0.0,,215.0,0.0
+validation,Usage profile,pooled,22.154,94.346,391.563,205.6166,0.0234,0.6124,0.045,0.3139,0.0,,,
+validation,Usage profile,house_17,22.154,94.346,391.563,205.6166,0.0234,0.6124,0.045,0.3139,0.0,,215.0,0.0
+validation,LightGBM regression,pooled,8.3671,68.2503,237.8435,40.8789,0.199,0.8109,0.3196,0.1139,0.7023,0.4675,,
+validation,LightGBM regression,house_17,8.3671,68.2503,237.8435,40.8789,0.199,0.8109,0.3196,0.1139,0.7023,0.4675,215.0,323.0
+validation,LightGBM hurdle,pooled,5.0711,74.9634,210.1728,5.0333,0.6019,0.6129,0.6074,0.0702,0.6512,0.7015,,
+validation,LightGBM hurdle,house_17,5.0711,74.9634,210.1728,5.0333,0.6019,0.6129,0.6074,0.0702,0.6512,0.7015,215.0,201.0
+test,Always-off,pooled,15.1753,172.7097,751.5456,-100.0,0.0,0.0,0.0,0.3356,0.0,,,
+test,Always-off,house_8,24.2725,220.8726,855.494,-100.0,0.0,0.0,0.0,0.5706,0.0,,360.0,0.0
+test,Always-off,house_18,3.842,78.8229,385.2777,-100.0,0.0,0.0,0.0,0.1006,0.0,,129.0,0.0
+test,Constant mean,pooled,31.6056,172.0557,734.1753,14.4642,0.0,0.0,0.0,0.4271,0.0,,,
+test,Constant mean,house_8,40.2428,219.6433,838.1237,-28.4364,0.0,0.0,0.0,0.533,0.0,,360.0,0.0
+test,Constant mean,house_18,20.8455,79.883,367.9074,352.1216,0.0,0.0,0.0,0.3212,0.0,,129.0,0.0
+test,Usage profile,pooled,31.9127,173.1219,736.0698,15.7289,0.0209,0.3731,0.0395,0.4383,0.0,,,
+test,Usage profile,house_8,40.6221,220.7496,841.362,-27.9173,0.0287,0.3635,0.0532,0.5433,0.0,,360.0,0.0
+test,Usage profile,house_18,21.0626,81.2459,365.067,359.2554,0.0112,0.4069,0.0218,0.3332,0.0,,129.0,0.0
+test,LightGBM regression,pooled,26.8384,149.8545,549.8851,36.3346,0.1578,0.8927,0.2681,0.3152,0.8778,0.2681,,
+test,LightGBM regression,house_8,38.7015,191.5273,648.8191,14.0828,0.1954,0.8823,0.3199,0.4318,0.9417,0.2844,360.0,1178.0
+test,LightGBM regression,house_18,12.0592,68.7979,201.2855,211.4719,0.096,0.9294,0.174,0.1986,0.814,0.2519,129.0,401.0
+test,LightGBM hurdle,pooled,16.496,160.95,534.4943,-20.6364,0.5571,0.5812,0.5689,0.2481,0.7548,0.5763,,
+test,LightGBM hurdle,house_8,24.6811,200.9636,640.2684,-34.8991,0.6346,0.5465,0.5873,0.3823,0.75,0.6675,360.0,412.0
+test,LightGBM hurdle,house_18,6.299,88.6779,161.7932,91.6213,0.4176,0.7035,0.5241,0.1139,0.7597,0.4851,129.0,202.0
+validation,LightGBM hurdle [causal features],pooled,6.9074,93.3522,267.1344,11.3744,0.5401,0.5285,0.5342,0.089,0.5767,0.6108,,
+validation,LightGBM hurdle [causal features],house_17,6.9074,93.3522,267.1344,11.3744,0.5401,0.5285,0.5342,0.089,0.5767,0.6108,215.0,203.0
+test,LightGBM hurdle [causal features],pooled,18.7198,175.6852,592.0711,-19.8651,0.4713,0.4863,0.4787,0.2653,0.6583,0.5187,,
+test,LightGBM hurdle [causal features],house_8,28.4902,221.5924,704.6422,-32.57,0.5383,0.476,0.5053,0.4196,0.6111,0.6027,360.0,370.0
+test,LightGBM hurdle [causal features],house_18,6.5477,90.2464,195.4205,80.132,0.3367,0.5223,0.4095,0.111,0.7054,0.4348,129.0,207.0
+temporal_holdout,"LightGBM hurdle [seen houses, later period]",pooled,16.0808,135.1671,228.1072,-7.6253,0.6998,0.5573,0.6205,0.2085,0.7959,0.6876,,
+temporal_holdout,"LightGBM hurdle [seen houses, later period]",house_2,18.8159,157.1325,225.7345,14.2468,0.5721,0.5406,0.5559,0.2378,0.8083,0.5385,120.0,195.0
+temporal_holdout,"LightGBM hurdle [seen houses, later period]",house_5,28.2335,168.7716,293.2383,-61.1549,0.5654,0.1522,0.2398,0.4445,0.3467,0.6542,199.0,107.0
+temporal_holdout,"LightGBM hurdle [seen houses, later period]",house_7,21.2,144.7047,166.6968,7.3877,0.8052,0.851,0.8275,0.1827,0.9573,0.8091,281.0,330.0
+temporal_holdout,"LightGBM hurdle [seen houses, later period]",house_9,10.3678,110.7024,262.6518,21.7072,0.5849,0.714,0.643,0.1405,0.8378,0.61,74.0,100.0
+temporal_holdout,"LightGBM hurdle [seen houses, later period]",house_15,2.8834,51.6465,114.2026,-7.0113,0.9104,0.8527,0.8806,0.0468,0.9437,0.9315,71.0,73.0
+temporal_holdout,"LightGBM hurdle [seen houses, later period]",house_16,12.9478,136.107,265.3809,7.0482,0.65,0.694,0.6713,0.1985,0.8816,0.5826,76.0,115.0
+temporal_holdout,"Always-off [seen houses, later period]",pooled,20.4146,178.9727,450.815,-100.0,0.0,0.0,0.0,0.4482,0.0,,,
+temporal_holdout,"Always-off [seen houses, later period]",house_2,18.0217,174.0524,430.6293,-100.0,0.0,0.0,0.0,0.4251,0.0,,120.0,0.0
+temporal_holdout,"Always-off [seen houses, later period]",house_5,26.679,174.1922,333.5913,-100.0,0.0,0.0,0.0,0.5237,0.0,,199.0,0.0
+temporal_holdout,"Always-off [seen houses, later period]",house_7,38.667,252.5612,480.1563,-100.0,0.0,0.0,0.0,0.8706,0.0,,281.0,0.0
+temporal_holdout,"Always-off [seen houses, later period]",house_9,10.825,138.1314,549.2138,-100.0,0.0,0.0,0.0,0.2334,0.0,,74.0,0.0
+temporal_holdout,"Always-off [seen houses, later period]",house_15,11.7214,143.9011,640.8005,-100.0,0.0,0.0,0.0,0.2703,0.0,,71.0,0.0
+temporal_holdout,"Always-off [seen houses, later period]",house_16,15.2249,163.9453,588.0123,-100.0,0.0,0.0,0.0,0.366,0.0,,76.0,0.0

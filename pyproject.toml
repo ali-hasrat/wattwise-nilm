@@ -1,0 +1,10 @@
+[project]
+name = "wattwise"
+version = "1.0.0"
+description = "REFIT raw-data cleaning, washing-machine EDA and NILM disaggregation"
+requires-python = ">=3.10"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+addopts = "-q"

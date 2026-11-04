@@ -1,0 +1,236 @@
+{
+  "inputs": [
+    "E:\\Coding\\Flock-Energy\\REFIT_RAW_081116\\RAW_House1_Part1.csv",
+    "E:\\Coding\\Flock-Energy\\REFIT_RAW_081116\\RAW_House1_Part2.csv"
+  ],
+  "part1_timestamps": {
+    "rows": 4377877,
+    "first": "2013-10-09 14:06:17",
+    "last": "2014-10-01 01:27:07",
+    "time_unparseable": 0,
+    "unix_missing": 0,
+    "time_vs_unix_abs_diff_le_1s": 4377877,
+    "time_vs_unix_abs_diff_gt_1s": 0,
+    "monotonic": false,
+    "backward_jumps": 1,
+    "repeated_timestamps": 1003950,
+    "interval_median_s": 7.0,
+    "interval_p99_s": 16.0,
+    "gaps_gt_1min": 781,
+    "gaps_gt_10min": 331,
+    "gaps_gt_1h": 14,
+    "gaps_gt_1day": 3,
+    "exact_duplicate_rows": 595935
+  },
+  "part1_missing_values": {
+    "Aggregate": 0,
+    "Appliance1": 0,
+    "Appliance2": 0,
+    "Appliance3": 0,
+    "Appliance4": 0,
+    "Appliance5": 0,
+    "Appliance6": 0,
+    "Appliance7": 0,
+    "Appliance8": 0,
+    "Appliance9": 0
+  },
+  "part1_timezone": {
+    "nonexistent_local_times": 0,
+    "ambiguous_resolved_by_order": 1199,
+    "ambiguous_unresolved_dropped": 0
+  },
+  "part2_timestamps": {
+    "rows": 4140886,
+    "first": "2014-06-27 21:57:50",
+    "last": "2015-07-10 11:56:32",
+    "time_unparseable": 0,
+    "unix_missing": 0,
+    "time_vs_unix_abs_diff_le_1s": 4140886,
+    "time_vs_unix_abs_diff_gt_1s": 0,
+    "monotonic": true,
+    "backward_jumps": 0,
+    "repeated_timestamps": 14755,
+    "interval_median_s": 7.0,
+    "interval_p99_s": 9.0,
+    "gaps_gt_1min": 3604,
+    "gaps_gt_10min": 59,
+    "gaps_gt_1h": 19,
+    "gaps_gt_1day": 10,
+    "exact_duplicate_rows": 0
+  },
+  "part2_missing_values": {
+    "Aggregate": 188973,
+    "Appliance1": 437890,
+    "Appliance2": 459468,
+    "Appliance3": 311961,
+    "Appliance4": 510963,
+    "Appliance5": 497223,
+    "Appliance6": 342337,
+    "Appliance7": 232752,
+    "Appliance8": 390705,
+    "Appliance9": 1911811
+  },
+  "part2_timezone": {
+    "nonexistent_local_times": 0,
+    "ambiguous_resolved_by_order": 0,
+    "ambiguous_unresolved_dropped": 986
+  },
+  "overlap_part1_part2": {
+    "overlap": true,
+    "start": "2014-06-27 20:57:49+00:00",
+    "end": "2014-10-01 00:27:07+00:00",
+    "aggregate_r_1min": 0.792,
+    "days_compared": 91,
+    "days_daily_r_below_0.9": 39,
+    "earlier_iam_sum_exceeds_aggregate_frac": 0.0032,
+    "later_iam_sum_exceeds_aggregate_frac": 0.0011
+  },
+  "merge": {
+    "part1_rows_dropped_overlap": 1257865
+  },
+  "deduplication": {
+    "rows_in": 7259912,
+    "exact_duplicates_dropped": 508772,
+    "rows_sharing_timestamp": 174876,
+    "conflicting_timestamps": 87000,
+    "rows_out": 6663264
+  },
+  "validity": {
+    "Aggregate": {
+      "negative": 0,
+      "above_limit": 97,
+      "zero_aggregate": 8,
+      "missing_before": 174777
+    },
+    "Appliance1": {
+      "negative": 0,
+      "above_limit": 761,
+      "zero_aggregate": 0,
+      "missing_before": 423610
+    },
+    "Appliance2": {
+      "negative": 0,
+      "above_limit": 35,
+      "zero_aggregate": 0,
+      "missing_before": 445120
+    },
+    "Appliance3": {
+      "negative": 0,
+      "above_limit": 116,
+      "zero_aggregate": 0,
+      "missing_before": 297701
+    },
+    "Appliance4": {
+      "negative": 0,
+      "above_limit": 1011,
+      "zero_aggregate": 0,
+      "missing_before": 496646
+    },
+    "Appliance5": {
+      "negative": 0,
+      "above_limit": 70,
+      "zero_aggregate": 0,
+      "missing_before": 482908
+    },
+    "Appliance6": {
+      "negative": 0,
+      "above_limit": 33,
+      "zero_aggregate": 0,
+      "missing_before": 328061
+    },
+    "Appliance7": {
+      "negative": 0,
+      "above_limit": 373,
+      "zero_aggregate": 0,
+      "missing_before": 218513
+    },
+    "Appliance8": {
+      "negative": 0,
+      "above_limit": 149,
+      "zero_aggregate": 0,
+      "missing_before": 376393
+    },
+    "Appliance9": {
+      "negative": 0,
+      "above_limit": 43,
+      "zero_aggregate": 0,
+      "missing_before": 1896158
+    }
+  },
+  "iam_sum_exceeds_aggregate_rows": 47648,
+  "isolated_spikes_kept": {
+    "Aggregate": 2910,
+    "Appliance1": 368,
+    "Appliance2": 1589,
+    "Appliance3": 797,
+    "Appliance4": 55,
+    "Appliance5": 186,
+    "Appliance6": 11,
+    "Appliance7": 3,
+    "Appliance8": 18,
+    "Appliance9": 10
+  },
+  "gaps": {
+    "Aggregate": {
+      "minutes_missing_after_resample": 119686,
+      "minutes_filled_short_gap": 893,
+      "minutes_still_missing": 118793
+    },
+    "Appliance1": {
+      "minutes_missing_after_resample": 123778,
+      "minutes_filled_short_gap": 2801,
+      "minutes_still_missing": 120977
+    },
+    "Appliance2": {
+      "minutes_missing_after_resample": 123473,
+      "minutes_filled_short_gap": 2371,
+      "minutes_still_missing": 121102
+    },
+    "Appliance3": {
+      "minutes_missing_after_resample": 121143,
+      "minutes_filled_short_gap": 930,
+      "minutes_still_missing": 120213
+    },
+    "Appliance4": {
+      "minutes_missing_after_resample": 132837,
+      "minutes_filled_short_gap": 3232,
+      "minutes_still_missing": 129605
+    },
+    "Appliance5": {
+      "minutes_missing_after_resample": 129691,
+      "minutes_filled_short_gap": 3567,
+      "minutes_still_missing": 126124
+    },
+    "Appliance6": {
+      "minutes_missing_after_resample": 120560,
+      "minutes_filled_short_gap": 839,
+      "minutes_still_missing": 119721
+    },
+    "Appliance7": {
+      "minutes_missing_after_resample": 119701,
+      "minutes_filled_short_gap": 894,
+      "minutes_still_missing": 118807
+    },
+    "Appliance8": {
+      "minutes_missing_after_resample": 121889,
+      "minutes_filled_short_gap": 1859,
+      "minutes_still_missing": 120030
+    },
+    "Appliance9": {
+      "minutes_missing_after_resample": 338369,
+      "minutes_filled_short_gap": 1058,
+      "minutes_still_missing": 337311
+    }
+  },
+  "outages": {
+    "count": 381,
+    "total_minutes": 118793,
+    "longest_minutes": 59906
+  },
+  "output": {
+    "first": "2013-10-09 13:06:00+00:00",
+    "last": "2015-07-10 10:56:00+00:00",
+    "minutes": 920031,
+    "aggregate_coverage": 0.8708815246442783
+  }
+}

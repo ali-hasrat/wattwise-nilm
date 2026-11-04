@@ -1,0 +1,20 @@
+# Python / environment
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# REFIT source data (~14 GB, CC-BY 4.0) - download from the University of Strathclyde (see README)
+REFIT_RAW_081116/
+CLEAN_REFIT_081116/
+*.7z
+
+# Large generated intermediates (re-created by `python run_pipeline.py`)
+outputs/data/
+outputs/logs/
+
+# Editors / OS
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store

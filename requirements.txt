@@ -1,0 +1,9 @@
+# Tested with Python 3.13.0 on Windows 11 (versions below are the ones verified).
+pandas==3.1.0
+numpy==2.5.4
+pyarrow==26.0.1
+matplotlib==3.11.2
+scikit-learn==1.9.1
+lightgbm==4.7.0
+PyYAML==6.0.3
+pytest==9.2.0
