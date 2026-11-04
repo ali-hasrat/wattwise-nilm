@@ -165,13 +165,36 @@ appropriate for analysing stored meter data. A causal ablation reports the cost 
 4. A model designed for interval data (features and hyperparameters tuned at 15/30 minutes, not
    converted from the 1-minute design) to see how much of the measured resolution loss is recoverable.
 
-## AI tools used
+## AI tools used and my role
 
-This project was developed with **Claude Code (Anthropic, Claude Opus 5.5)** used as an AI
-pair-programmer inside VS Code: it inspected the dataset, proposed and implemented the pipeline,
-tests and documentation, ran every stage, and investigated anomalies (DST handling, Part1/Part2
-overlap, the official files' time base). Every number in the documents comes from executed code
-in this repository; the design decisions are explained so they can be reviewed independently.
+I built this project with **Claude Code (Anthropic, Claude Opus 5.5)**, an AI coding agent,
+inside VS Code. I want to be clear about the split of work.
+
+**My role**
+* **Defined the brief and its rules.** I wrote the specification Claude Code worked from: the
+  four tasks, the deliverables, and working rules. The rules were:
+  * Never modify the original REFIT files.
+  * Ask before any destructive step.
+  * Never invent observations, statistics or model results.
+  * Never describe the work as tested, error-free or accurate unless that had been checked.
+* **Provided the data and environment.** I set up the workspace with the REFIT raw and cleaned
+  datasets, and created and own this GitHub repository.
+* **Steered the scope.** I asked for a further round of improvements before submission. The
+  15/30-minute experiment (RESULTS.md §6.9) and the automated tests on GitHub came out of that
+  round.
+* **Reviewed the outcome.** I read the code, results and documents before submitting, and I am
+  accountable for what is submitted.
+
+**What Claude Code did:**
+* Inspected the dataset.
+* Proposed and implemented the pipeline, tests and documents.
+* Ran every stage.
+* Investigated the data anomalies described in DATA.md: DST handling, the Part1/Part2 overlap,
+  and the official files' time base.
+
+**How to check the work:** every number in the documents comes from code in this repository.
+Two full runs gave identical results, and the 42 tests run on every push. The design decisions
+are explained in DATA.md and RESULTS.md so they can be reviewed independently of who wrote them.
 
 ## References
 
