@@ -75,7 +75,7 @@ output was inspected; 41 automated tests pass (`python -m pytest`).
 | DATA.md | ✅ |
 | RESULTS.md | ✅ |
 | Recommendation.md (one-page summary + Section 4 answers) | ✅ (dense; about one printed page plus the Section 4 answers) |
-| Public GitHub repository | ⚠️ not created by the pipeline; the folder is ready to publish (`.gitignore` excludes the 14 GB of REFIT data and large intermediates) |
+| Public GitHub repository | ✅ <https://github.com/ali-hasrat/wattwise-nilm> (`.gitignore` excludes the 14 GB of REFIT data and large intermediates) |
 
 ## Reproducibility checks performed
 
