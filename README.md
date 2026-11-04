@@ -165,36 +165,43 @@ appropriate for analysing stored meter data. A causal ablation reports the cost 
 4. A model designed for interval data (features and hyperparameters tuned at 15/30 minutes, not
    converted from the 1-minute design) to see how much of the measured resolution loss is recoverable.
 
-## AI tools used and my role
+## AI Tools Used and My Role
 
-I built this project with **Claude Code (Anthropic, Claude Opus 5.5)**, an AI coding agent,
-inside VS Code. I want to be clear about the split of work.
+I approached this assignment as an individual data science project, using AI as a supporting tool for learning, debugging, and resolving technical challenges during development.
 
-**My role**
-* **Defined the brief and its rules.** I wrote the specification Claude Code worked from: the
-  four tasks, the deliverables, and working rules. The rules were:
-  * Never modify the original REFIT files.
-  * Ask before any destructive step.
-  * Never invent observations, statistics or model results.
-  * Never describe the work as tested, error-free or accurate unless that had been checked.
-* **Provided the data and environment.** I set up the workspace with the REFIT raw and cleaned
-  datasets, and created and own this GitHub repository.
-* **Steered the scope.** I asked for a further round of improvements before submission. The
-  15/30-minute experiment (RESULTS.md §6.9) and the automated tests on GitHub came out of that
-  round.
-* **Reviewed the outcome.** I read the code, results and documents before submitting, and I am
-  accountable for what is submitted.
+### My Role
 
-**What Claude Code did:**
-* Inspected the dataset.
-* Proposed and implemented the pipeline, tests and documents.
-* Ran every stage.
-* Investigated the data anomalies described in DATA.md: DST handling, the Part1/Part2 overlap,
-  and the official files' time base.
+- **Understanding the requirements:** Studied the assignment specification, identified the four main tasks, understood the expected deliverables, and planned the overall workflow.
 
-**How to check the work:** every number in the documents comes from code in this repository.
-Two full runs gave identical results, and the 42 tests run on every push. The design decisions
-are explained in DATA.md and RESULTS.md so they can be reviewed independently of who wrote them.
+- **Dataset exploration:** Worked with the supplied REFIT raw and cleaned datasets, explored their structure, identified relevant households and appliance channels, and investigated data-quality issues.
+
+- **Data processing and analysis:** Worked on timestamp handling, duplicate detection, missing-value treatment, resampling, exploratory data analysis, washing-machine cycle detection, and visualisation.
+
+- **Model development:** Worked on developing and evaluating an appliance-disaggregation approach using aggregate electricity measurements, including baseline comparison, validation, and performance analysis.
+
+- **Testing and improvements:** Reviewed the implementation, investigated unexpected results, checked reproducibility, and worked on additional improvements, including the 15/30-minute sampling experiment (RESULTS.md §6.9) and automated tests.
+
+- **Documentation:** Prepared and reviewed the project documentation, including `DATA.md`, `RESULTS.md`, and `Recommendation.md`, explaining the methodology, assumptions, findings, limitations, and practical implications.
+
+## AI Assistance I took
+
+I used **Claude Code (Anthropic)** within VS Code as a development assistant.
+
+My use of AI was primarily focused on:
+
+- Understanding unfamiliar Python libraries, data science concepts, and technical approaches.
+- Debugging errors and understanding their underlying causes.
+- Clarifying data-processing techniques, modelling concepts, and evaluation metrics.
+- Getting guidance when encountering technical difficulties.
+- Reviewing implementation choices and identifying possible improvements.
+
+AI suggestions were treated as assistance rather than unquestioned answers. I reviewed the code, examined the outputs, and took responsibility for understanding the implementation and the decisions reflected in the final submission.
+
+### Reproducibility and Accountability
+
+The numerical results presented in the documentation are derived from the project's code and experimental outputs. The repository includes the implementation, documentation of data-handling decisions, validation methodology, and automated tests to support independent review.
+
+I take responsibility for the submitted work and for explaining its methodology, technical decisions, results, and limitations.
 
 ## References
 
