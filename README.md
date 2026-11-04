@@ -183,7 +183,7 @@ I approached this assignment as an individual data science project, using AI as 
 
 - **Documentation:** Prepared and reviewed the project documentation, including `DATA.md`, `RESULTS.md`, and `Recommendation.md`, explaining the methodology, assumptions, findings, limitations, and practical implications.
 
-## AI Assistance I took
+### AI Assistance I took
 
 I used **Claude Code (Anthropic)** within VS Code as a development assistant.
 
