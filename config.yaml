@@ -109,3 +109,5 @@ model:
   causal_ablation: true      # also train with past-only features
   temporal_experiment: true  # also test on the later 30% of the *training* houses
   temporal_split_fraction: 0.7
+  # Task 4: retrain the hurdle model on 15/30-min means of the same data ([] to skip)
+  resolutions_min: [15, 30]

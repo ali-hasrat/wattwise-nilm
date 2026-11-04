@@ -1,8 +1,8 @@
 # COMPLIANCE.md — Assignment requirements vs evidence
 
 Status key: ✅ met and verified by execution · ⚠️ met with a stated limitation.
-"Verified" means the code ran end-to-end (`python run_pipeline.py`, exit 0, ~12 min) and the
-output was inspected; 41 automated tests pass (`python -m pytest`).
+"Verified" means the code ran end-to-end (`python run_pipeline.py`, exit 0, ~13 min) and the
+output was inspected; 42 automated tests pass (`python -m pytest`), also on GitHub Actions for every push.
 
 ## Dataset
 
@@ -49,7 +49,7 @@ output was inspected; 41 automated tests pass (`python -m pytest`).
 | Appropriate metrics, explained | `metrics.py` docstring, RESULTS.md §6.4 | MAE, RMSE, MAE-on, energy error, daily energy MAE, P/R/F1, cycle recall/precision; always-off caveat shown with numbers | ✅ |
 | Actual-vs-predicted plot on evaluation data | `task3_actual_vs_predicted.png` | unseen House 8 | ✅ |
 | 1–2 failure cases | `task3_failure_cases.png`, RESULTS.md §6.7 | phantom load (overlapping signatures, washer-dryer), missed night-time back-to-back washes | ✅ |
-| (extra) ablations | `task3_metrics.csv` | causal-only features; seen-house temporal hold-out | ✅ |
+| (extra) ablations | `task3_metrics.csv`, `task3_resolution.csv` | causal-only features; seen-house temporal hold-out; 15/30-minute input resolution | ✅ |
 | Test set size | — | only two test houses; no confidence interval | ⚠️ |
 
 ## 4. Practical implications (Recommendation.md)
@@ -58,7 +58,7 @@ output was inspected; 41 automated tests pass (`python -m pytest`).
 |---|---|---|
 | One realistic opportunity + how to measure it | "cooler and later" insight card; randomised pilot with smart-plug sub-sample, pre-registered outcomes | ✅ |
 | Limitations: overlapping signatures, missing data, household differences, UK→India | dedicated sections, each tied to measured results | ✅ |
-| Paragraph on 15/30-minute data | final section (reasoned, explicitly not measured) | ⚠️ not quantified experimentally |
+| Paragraph on 15/30-minute data | final section, backed by an experiment: same model retrained on 15/30-min means, scored on the 1-min truth (RESULTS.md §6.9, `task3_resolution.csv`) | ✅ |
 
 ## Research guidance
 

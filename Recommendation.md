@@ -76,8 +76,13 @@ hour of 50–150 W tumbling — is shorter than or similar to a single 15/30-min
 that resolution the heating phase becomes one modest bump in interval energy (≈0.3–0.6 kWh),
 indistinguishable from a kettle plus cooking in the same interval; the tumbling and spin phases,
 the start time (to within 15–30 min) and back-to-back cycles disappear; concurrent loads are
-summed together; and there are 15–30× fewer data points to learn from. Cycle detection and
-minute-level power estimates would no longer be realistic. What remains feasible is coarser:
-estimating washing energy over weeks or months statistically, detecting "probably washed
-today", and segmenting customers — and even that would need to be re-validated, because this
-project only measured performance at 1-minute resolution.
+summed together; and there are 15–30× fewer data points to learn from.
+
+**Measured** by retraining the same model on 15- and 30-minute averages of the same homes (RESULTS.md
+§6.9), daily washing-energy error rose from 0.25 kWh at 1 minute to 0.42 and 0.47 kWh. That is worse
+than simply assuming no washing (0.34 kWh). Per-home energy errors reached +240–280 %. Spotting days
+with a wash held up better: at 30 minutes, 93 % of wash days were found, but with precision 0.59
+against 0.47 for flagging every day. So with interval data, a utility should not offer per-customer
+washing kWh or wash timing. What remains realistic is population-level analysis (e.g. how much
+washing falls in the evening peak, estimated from sub-metered panels) and soft "you may have washed
+today" prompts, ideally confirmed by a smart plug or a customer tap.

@@ -130,3 +130,15 @@ def test_eligible_mask_rules():
     m = pd.DataFrame({"n_rows": [5, 0, 5, 5, 5], "aggregate": [1.0, np.nan, 1, 1, 1], "wm": [0.0, np.nan, 0, 0, np.nan],
                       "wm_stuck": [False, False, True, False, False], "issues": [0, 0, 0, 1, 0]})
     assert eligible_mask(m).tolist() == [True, False, False, False, False]
+
+
+def test_resolution_spread_preserves_energy_and_scales_windows():
+    from wattwise.resolution import feature_kwargs, to_minutes
+
+    idx = pd.date_range("2014-01-01", periods=60, freq="1min", tz="UTC")
+    coarse = pd.Series([600.0, 0.0, 300.0, 1200.0], index=idx[::15])
+    fine = to_minutes(coarse, idx, 15)
+    assert len(fine) == 60 and fine.iloc[14] == 600.0 and fine.iloc[15] == 0.0
+    assert np.isclose(fine.mean(), coarse.mean())          # energy-preserving
+    kw = feature_kwargs(30)
+    assert all(w % 2 == 1 and w >= 3 for w in kw["windows"]) and kw["offsets"][0] == 1

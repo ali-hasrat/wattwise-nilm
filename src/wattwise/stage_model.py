@@ -361,6 +361,11 @@ def run(cfg: dict[str, Any]) -> dict[str, Any]:
     table = table.round(4)
     table.to_csv(paths.tables / "task3_metrics.csv", index=False)
 
+    # ---- Task 4: same hurdle model on 15/30-minute data, scored on the 1-minute truth ------
+    if mc.get("resolutions_min"):
+        from . import resolution
+        resolution.run(cfg, te, preds["LightGBM hurdle"])
+
     # ---- figures and artefacts on the test houses --------------------------------------
     frames = {h: per_minute_frame(te, preds[best], h) for h in mc["test_houses"]}
     base_frames = {h: per_minute_frame(te, preds["Usage profile"], h) for h in mc["test_houses"]}

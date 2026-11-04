@@ -303,6 +303,49 @@ The on/off classifier relies mostly on short-window activity (sum of absolute ch
 load and the hour of day. The prominence of hour features is a double-edged sword: it
 helps for "typical" daytime washers and hurts for House 8.
 
+### 6.9 The same model on 15- and 30-minute data (`task3_resolution.csv`)
+
+To answer the Section 4 question with a measurement rather than only an argument, the
+1-minute cleaned data were averaged into 15- and 30-minute intervals, which is what a smart
+meter's interval energy reading contains. The hurdle model was retrained on the coarse series:
+same houses and splits, the same feature durations converted to interval counts, early
+stopping and threshold tuned on House 17 (0.30 at 15 min, 0.25 at 30 min). Each interval's
+predicted power is spread evenly over its minutes and scored against the **same 1-minute
+ground truth and eligible minutes** as the 1-minute model (`src/wattwise/resolution.py`).
+
+![resolution comparison](outputs/figures/task3_resolution.png)
+
+| Test houses 8 + 18 (pooled) | 1 min | 15 min | 30 min | Naive reference |
+|---|---|---|---|---|
+| Daily energy MAE (kWh) | **0.248** | 0.415 | 0.473 | always-off 0.336 |
+| Energy error, House 8 / House 18 | −35 % / +92 % | −40 % / +278 % | +76 % / +239 % | |
+| Wash days found (recall) | 0.86 | 0.70 | 0.93 | every day: 1.00 |
+| Wash-day precision | **0.70** | 0.58 | 0.59 | every day: 0.47 |
+| Minute on/off F1 | **0.57** | 0.23 | 0.22 | |
+| Cycle recall / precision | **0.75 / 0.58** | 0.44 / 0.25 | 0.60 / 0.29 | |
+
+A wash day is a day with ≥ 0.1 kWh of washing-machine energy (393 of 841 complete test
+days). This measure doesn't depend on resolution. The minute and cycle scores are partly
+penalised by averaging, because the cycle rule needs a 300 W peak and averaging lowers peaks.
+
+* **Energy estimates stop being useful.** At both coarse resolutions the daily energy error is
+  worse than predicting zero. The 15-minute pooled energy error (−4 %) looks good only because a
+  −40 % error in House 8 and a +278 % error in House 18 cancel out.
+* **"Did they wash today?" mostly survives, but weakly.** At 30 minutes the model finds 93 % of
+  wash days by flagging most days. Its precision (0.59) is only 12 points above simply calling
+  every day a wash day (0.47). At 1 minute the precision is 0.70.
+* **Why**: in the example below, the 2.5 kW heating block becomes one or two raised intervals that
+  look like the cooking and kettle blocks later that morning, and the low-power tumble/spin
+  phases vanish into the baseline.
+
+![wash signature at three resolutions](outputs/figures/task3_resolution_example.png)
+
+Caveats: the coarse models reuse the 1-minute model's hyperparameters and feature design, so a
+model built for interval data might do somewhat better. Real 30-minute meter data would also
+add issues that averaged REFIT data do not have, such as missing reads and clock drift. The
+direction of the result is still clear: under this split, 15/30-minute data supports
+population-level or "probably washed" signals, not per-customer energy estimates.
+
 ## 7. What I would do next (and why)
 
 1. **Per-household calibration** — the seen-house experiment shows the biggest gain;

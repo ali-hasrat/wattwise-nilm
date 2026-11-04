@@ -18,14 +18,17 @@ def _roll(s: pd.Series, w: int, causal: bool):
 
 
 def build_features(agg: pd.Series, causal: bool = False, windows: tuple[int, ...] = (5, 15, 31, 61, 121),
-                   offsets: tuple[int, ...] = (1, 2, 5, 10, 20, 30, 60), heater_w: float = 1500) -> pd.DataFrame:
-    """Feature frame (float32) aligned with ``agg`` (regular 1-min UTC index, NaN = missing)."""
+                   offsets: tuple[int, ...] = (1, 2, 5, 10, 20, 30, 60), heater_w: float = 1500,
+                   base_window: int = 241, step_windows: tuple[int, ...] = (31, 121)) -> pd.DataFrame:
+    """Feature frame (float32) aligned with ``agg`` (regular UTC index, NaN = missing).
+
+    Windows and offsets are in samples; the defaults are for 1-minute data."""
     if not isinstance(agg.index, pd.DatetimeIndex):
         raise TypeError("aggregate must have a DatetimeIndex")
     a = agg.astype("float64")
     f: dict[str, pd.Series] = {"agg": a}
-    base = _roll(a, 241, causal).min()                     # slowly varying base load (fridges, standby)
-    f["base_241"] = base
+    base = _roll(a, base_window, causal).min()                     # slowly varying base load (fridges, standby)
+    f[f"base_{base_window}"] = base
     above = a - base
     f["above_base"] = above
     d1 = a.diff()
@@ -44,7 +47,7 @@ def build_features(agg: pd.Series, causal: bool = False, windows: tuple[int, ...
         f[f"missing_{w}"] = _roll(a.isna().astype(float), w, causal).mean()
     steps_up = (d1 >= heater_w).astype(float)
     steps_down = (d1 <= -heater_w).astype(float)
-    for w in (31, 121):
+    for w in step_windows:
         f[f"steps_up_{w}"] = _roll(steps_up, w, causal).sum()
         f[f"steps_down_{w}"] = _roll(steps_down, w, causal).sum()
     for k in offsets:

@@ -1,5 +1,7 @@
 # WattWise NILM — REFIT data cleaning and washing-machine disaggregation
 
+[![tests](https://github.com/ali-hasrat/wattwise-nilm/actions/workflows/tests.yml/badge.svg)](https://github.com/ali-hasrat/wattwise-nilm/actions/workflows/tests.yml)
+
 Flock Energy data-science take-home. A reproducible Python pipeline that
 
 1. **cleans raw REFIT data for House 1** (timestamps, DST, duplicates, impossible values,
@@ -17,7 +19,7 @@ Flock Energy data-science take-home. A reproducible Python pipeline that
 | [RESULTS.md](RESULTS.md) | washing-machine EDA, plots, model results, validation, failure analysis |
 | [Recommendation.md](Recommendation.md) | one-page utility summary + Section 4 answers (UK→India, 15/30-min data) |
 | [COMPLIANCE.md](COMPLIANCE.md) | requirement-by-requirement check of the assignment against the evidence |
-| `src/wattwise/`, `run_pipeline.py`, `tests/` | source code, entry point, 41 automated tests |
+| `src/wattwise/`, `run_pipeline.py`, `tests/` | source code, entry point, 42 automated tests |
 
 ## Headline results
 
@@ -33,6 +35,14 @@ Flock Energy data-science take-home. A reproducible Python pipeline that
   for a usage-profile baseline. Always-off has the best per-minute MAE (15.2 W vs 16.5 W) — a
   reminder that MAE alone is misleading for a sparse appliance. Accuracy is strongly
   household-dependent (energy error −35 % and +92 % in the two test homes).
+* **15/30-minute data, measured**: the same model retrained on 15- and 30-minute averages has a
+  daily energy error of 0.42 / 0.47 kWh, worse than always-off. Only weak "washed today?" signals
+  remain (RESULTS.md §6.9).
+
+![actual vs predicted washing-machine power on an unseen house](outputs/figures/task3_actual_vs_predicted.png)
+
+*Unseen test House 8: the model sees only the grey aggregate (top) and estimates the washing
+machine (bottom, blue) against the sub-metered truth (black). More plots in [RESULTS.md](RESULTS.md).*
 
 ## Setup (Windows, VS Code terminal)
 
@@ -61,11 +71,11 @@ The source folders are only ever read.
 ## Run
 
 ```powershell
-python run_pipeline.py                     # everything (~12 min on a 16-thread laptop)
+python run_pipeline.py                     # everything (~13 min on a 16-thread laptop)
 python run_pipeline.py --stage raw         # Task 1 only (~40 s)
 python run_pipeline.py --stage prepare eda # Task 2 (needs raw files for the time-base audit)
 python run_pipeline.py --stage model       # Task 3 (needs 'prepare' first)
-python -m pytest                           # 41 tests on synthetic fixtures (~5 s)
+python -m pytest                           # 42 tests on synthetic fixtures (~5 s)
 ```
 
 | Stage | Reads | Writes |
@@ -97,6 +107,7 @@ src/wattwise/
   models.py              baselines, LightGBM regression and hurdle model
   metrics.py             power, energy, on/off and cycle-level metrics
   stage_model.py         Task 3 training, selection, evaluation, ablations, figures
+  resolution.py          Task 4 experiment: the same model on 15/30-minute data
   plotting.py            shared figure style
 tests/                   unit + end-to-end tests on synthetic data
 references/              official dataset readme
@@ -151,8 +162,8 @@ appropriate for analysing stored meter data. A causal ablation reports the cost 
    test removing hour-of-day features, which encode training-house habits.
 3. A seq2point CNN under the same split and metrics; event-level post-processing that enforces the
    heat → tumble → spin template.
-4. An experiment on 15/30-minute resampled data to quantify the resolution trade-off discussed in
-   Recommendation.md.
+4. A model designed for interval data (features and hyperparameters tuned at 15/30 minutes, not
+   converted from the 1-minute design) to see how much of the measured resolution loss is recoverable.
 
 ## AI tools used
 

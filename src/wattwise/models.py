@@ -74,7 +74,7 @@ class LGBMRegression:
         self.model_ = lgb.LGBMRegressor(**self.params)
         kw = {}
         if X_val is not None:
-            kw = dict(eval_set=[(X_val, y_val)], callbacks=[lgb.early_stopping(100, verbose=False)])
+            kw = dict(eval_X=X_val, eval_y=y_val, callbacks=[lgb.early_stopping(100, verbose=False)])
         self.model_.fit(X, y, sample_weight=w, **kw)
         log.info("%s: %d trees", self.name, self.model_.best_iteration_ or self.params["n_estimators"])
         return self
@@ -107,8 +107,8 @@ class LGBMHurdle:
         kw_c, kw_r = {}, {}
         if X_val is not None:
             on_val = y_val >= self.on_w
-            kw_c = dict(eval_set=[(X_val, on_val)], callbacks=[lgb.early_stopping(100, verbose=False)])
-            kw_r = dict(eval_set=[(X_val[on_val], y_val[on_val])], callbacks=[lgb.early_stopping(100, verbose=False)])
+            kw_c = dict(eval_X=X_val, eval_y=on_val, callbacks=[lgb.early_stopping(100, verbose=False)])
+            kw_r = dict(eval_X=X_val[on_val], eval_y=y_val[on_val], callbacks=[lgb.early_stopping(100, verbose=False)])
         self.clf_.fit(X, on, sample_weight=w, **kw_c)
         self.reg_.fit(X[on], y[on], sample_weight=None if w is None else w[on], **kw_r)
         log.info("%s: classifier %s trees, regressor %s trees", self.name,
